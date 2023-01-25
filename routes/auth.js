@@ -1,3 +1,4 @@
+const {login} = require("../controllers/authController");
 module.exports = function ({ app, dbConn }) {
   app.post("/login", (req, res) => {
     const { email, password } = req.body;
