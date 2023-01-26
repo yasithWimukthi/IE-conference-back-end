@@ -14,7 +14,25 @@ const getMeetingByMeetingId = async (req, res) => {
     });
 }
 
+const createMeeting = async (req, res) => {
+    const { name, uid, createdBy } = req.body;
+    if (!name || !uid) {
+        return res.status(200).jsonp({ message: "Please provide the meeting name and meeting uid" });
+    }
+    const meetings = [[name, uid, createdBy]];
+    const createMeetingSql = "INSERT INTO meeting (meeting_title, meeting_uid, created_by) VALUES ?";
+    dbConn.query(createMeetingSql, [meetings], function (error, insertedMeeting) {
+        if (insertedMeeting) {
+            res.status(200).jsonp({ insertId: insertedMeeting.insertId });
+        } else {
+            console.log(error);
+            res.status(200).jsonp({ message: 'Cannot create your meeting, please try again' });
+        }
+    });
+}
+
 module.exports = {
     getMeetingsBelongsToUser,
-    getMeetingByMeetingId
+    getMeetingByMeetingId,
+    createMeeting
 }
