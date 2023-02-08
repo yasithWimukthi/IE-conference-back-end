@@ -13,7 +13,7 @@ module.exports = function ({ app, dbConn }) {
             if (insertedUser) {
               res.status(200).jsonp({ id, email, fullname, avatar });
             } else {
-              res.status(200).jsonp({ message: 'Cannot create your account, please try again' });
+              res.status(200).jsonp({ message: 'Cannot create your account, please try again',error });
             }
           });
         }
