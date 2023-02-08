@@ -1,4 +1,11 @@
+/**
+ * @description Login
+ * @param req
+ * @param res
+ * @param next
+ */
 const login = (req,res,next) => {
+
     const {email,password} = req.body;
     if(email && password){
         const sql = "SELECT * FROM user_account WHERE user_email = ? AND user_password = ?";
