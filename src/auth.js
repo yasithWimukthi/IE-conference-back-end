@@ -15,4 +15,8 @@ module.exports = function ({ app, dbConn }) {
       res.status(200).jsonp({ message: "Your username or password is not correct" });
     }
   });
+
+  app.get("/test", (req, res) =>{
+    res.status(200).jsonp({message: "Hello world!"});
+  })
 };
