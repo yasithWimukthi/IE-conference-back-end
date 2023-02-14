@@ -16,7 +16,7 @@ module.exports = function ({ app, dbConn }) {
     }
   });
 
-  app.get("/test", (req, res) =>{
-    res.status(200).jsonp({message: "Hello world!"});
-  })
+  // app.get("/test", (req, res) =>{
+  //   res.status(200).jsonp({message: "Hello world!"});
+  // })
 };
